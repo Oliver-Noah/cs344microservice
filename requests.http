@@ -1,0 +1,17 @@
+###
+POST https://localhost:5000/getRecommendations HTTP/1.1
+content-type: application/json
+
+{
+    "location": "New York City",
+    "recommendationType": "thingsToDo"
+}
+
+###
+POST https://localhost:5000/getRecommendations HTTP/1.1
+content-type: application/json
+
+{
+    "location": "New York City",
+    "recommendationType": "restaurants"
+}
