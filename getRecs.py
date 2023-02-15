@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
-openai.api_key = ("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")
+openai.api_key = ("ENTER YOUR OPENAI API KEY HERE")
 
 gpt_thingsToDo = "Give three recommendations for "
 gpt_restaurants = "Give three restaurant recommendations for "
@@ -37,7 +37,7 @@ def getRecs():
         gpt_responseList = response['choices'][0]['text'].split(",")
         return jsonify({"recs": gpt_responseList}), 200
     if recommendationType == "restaurants":
-        gpt_prompt2 = gpt_restaurants + recommendationType + gpt_in + location + gpt_suffix
+        gpt_prompt1 = gpt_restaurants + recommendationType + gpt_in + location + gpt_suffix
         response = openai.Completion.create(
         engine="text-davinci-002",
         prompt=gpt_prompt1,
@@ -54,3 +54,4 @@ def getRecs():
 
 if __name__ == "__main__":
     app.run()
+

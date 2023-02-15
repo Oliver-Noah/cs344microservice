@@ -1,17 +1,86 @@
 ###
-POST https://localhost:5000/getRecommendations HTTP/1.1
+POST http://localhost:5000/getRecommendations HTTP/1.1
 content-type: application/json
 
 {
-    "location": "New York City",
+    "location": "London",
     "recommendationType": "thingsToDo"
 }
 
 ###
-POST https://localhost:5000/getRecommendations HTTP/1.1
+POST http://localhost:5000/getRecommendations HTTP/1.1
 content-type: application/json
 
 {
-    "location": "New York City",
+    "location": "London",
     "recommendationType": "restaurants"
+}
+
+###
+POST http://localhost:5000/getRecommendations HTTP/1.1
+content-type: application/json
+
+{
+    "recommendationType": "restaurants"
+}
+
+###
+POST http://localhost:5000/getPlan HTTP/1.1
+content-type: application/json
+
+{
+    "numDays": 3,
+    "thingsToDo": [
+        "Walk around Central Park",
+        "Go to the Empire State Building",
+        "Go to Times Square"
+    ],
+    "restaurants": [
+        "Gramcery Tavern",
+        "Per Se",
+        "abc kitchen"
+    ]
+}
+
+###
+POST http://localhost:5000/getPlan HTTP/1.1
+content-type: application/json
+
+{
+    "thingsToDo": [
+        "Walk around Central Park",
+        "Go to the Empire State Building",
+        "Go to Times Square"
+    ],
+    "restaurants": [
+        "Gramcery Tavern",
+        "Per Se",
+        "abc kitchen"
+    ]
+}
+
+###
+POST http://localhost:5000/getPlan HTTP/1.1
+content-type: application/json
+
+{
+    "numDays": 3,
+    "restaurants": [
+        "Gramcery Tavern",
+        "Per Se",
+        "abc kitchen"
+    ]
+}
+
+###
+POST http://localhost:5000/getPlan HTTP/1.1
+content-type: application/json
+
+{
+    "numDays": 3,
+    "thingsToDo": [
+        "Walk around Central Park",
+        "Go to the Empire State Building",
+        "Go to Times Square"
+    ]
 }
