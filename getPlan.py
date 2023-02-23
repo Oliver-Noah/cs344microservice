@@ -6,12 +6,12 @@ from flask import Flask, request, jsonify
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
-openai.api_key = ("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")
+openai.api_key = ("ENTER YOUR OPENAI API KEY HERE")
 
 gpt_prefix = "using the following things to do, "
 gpt_prefix2 = " and the following restaurants, "
-gpt_in = " create a vacation plan for  "
-gpt_suffix = " days. Create a plan for a vacation with the output being the form of a python string. The output should have a similar format as this: 'Day 1: \nWalk around Central Park. Eat at Gramercy Cavern.\nDay 2:\netc."
+gpt_for = " create a vacation plan for  "
+gpt_suffix2 = " days. Create a plan for a vacation with the output being the form of a python string. The output should have a similar format as this: 'Day 1: \nWalk around Central Park. Eat at Gramercy Cavern.\nDay 2:\netc."
 
 @app.route("/getPlan", methods=["POST"])
 def getRecs():

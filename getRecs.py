@@ -11,7 +11,7 @@ openai.api_key = ("ENTER YOUR OPENAI API KEY HERE")
 gpt_thingsToDo = "Give three recommendations for "
 gpt_restaurants = "Give three restaurant recommendations for "
 gpt_in = " in "
-gpt_suffix = ". The recommendations should be given in the form of an array within a json object titled recs. The json object should not have any newline operators, and should all be on the same line"
+gpt_suffix = ". The recommendations should be given in a numbered list, with each recommendation on a new line. It should like the following: 1. Recommendation 1\n2. Recommendation 2\n 3. Recommendation 3"
 
 @app.route("/getRecommendations", methods=["POST"])
 def getRecs():
@@ -34,7 +34,9 @@ def getRecs():
         frequency_penalty=0.0,
         presence_penalty=0.0
         )
-        gpt_responseList = response['choices'][0]['text'].split(",")
+        gpt_responseList = response['choices'][0]['text'].split('\n')
+        gpt_responseList.remove("")
+        gpt_responseList.remove("")
         return jsonify({"recs": gpt_responseList}), 200
     if recommendationType == "restaurants":
         gpt_prompt1 = gpt_restaurants + recommendationType + gpt_in + location + gpt_suffix
@@ -47,11 +49,12 @@ def getRecs():
         frequency_penalty=0.0,
         presence_penalty=0.0
         )
-        gpt_responseList = response['choices'][0]['text'].split(",")
+        gpt_responseList = response['choices'][0]['text'].split('\n')
+        gpt_responseList.remove("")
+        gpt_responseList.remove("")
         return jsonify({"recs": gpt_responseList}), 200
     else:
         return "not a valid recommendationType", 404
 
 if __name__ == "__main__":
     app.run()
-
